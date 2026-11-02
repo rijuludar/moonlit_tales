@@ -4,6 +4,8 @@ A cozy, interactive web application that crafts gentle, age-appropriate bedtime 
 
 Powered by **Sarvam AI** (`sarvam-105b` for storytelling and `bulbul:v3` for natural speech synthesis).
 
+Demo LIVE at: https://rijuludar.github.io/moonlit_tales/
+
 ---
 
 ## ✨ Features
