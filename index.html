@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moonlit Tales: bedtime stories for kids</title>
+  <meta name="description" content="Pick a few topics, or let us surprise you. Moonlit Tales writes a gentle children's story and can read it aloud.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bagel+Fat+One&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="stars stars-a"></div>
+    <div class="stars stars-b"></div>
+    <div class="moon"></div>
+  </div>
+
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M21.5 3.2a13 13 0 1 0 7.3 21.6A11 11 0 0 1 21.5 3.2z" fill="#ffd96b"/></svg>
+        Moonlit Tales
+      </a>
+      <a class="powered" href="https://www.sarvam.ai" target="_blank" rel="noopener">Powered by <strong>Sarvam AI</strong></a>
+    </header>
+
+    <main>
+      <!-- ============ 1. PICK TOPICS ============ -->
+      <section id="makerView" aria-labelledby="mainTitle">
+        <div class="intro">
+          <h1 id="mainTitle">Tonight’s story is waiting for you.</h1>
+          <p>Pick a few topics you like, or pick nothing and we’ll surprise you. Every story is gentle, short and made for kids.</p>
+        </div>
+
+        <form id="storyForm" class="paper" novalidate>
+          <div id="keyNotice" class="notice" hidden>
+            Add your Sarvam API key at the top of <code>script.js</code> (the <code>SARVAM_API_KEY</code> line), then reload this page.
+          </div>
+          <div id="formError" class="error" role="alert" hidden></div>
+
+          <fieldset class="group">
+            <legend>What should the story be about?</legend>
+            <p class="hint">Pick up to 4. Skip this and we’ll choose for you.</p>
+            <div class="chips" id="topicChips">
+              <label class="chip"><input type="checkbox" name="topic" value="friendly animals"><span><b aria-hidden="true">🐘</b> Animals</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="a kind dragon"><span><b aria-hidden="true">🐉</b> Dragons</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="gentle magic"><span><b aria-hidden="true">🪄</b> Magic</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="outer space"><span><b aria-hidden="true">🚀</b> Space</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="under the sea"><span><b aria-hidden="true">🐠</b> Under the sea</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="an enchanted forest"><span><b aria-hidden="true">🌳</b> Forest</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="a friendly robot"><span><b aria-hidden="true">🤖</b> Robots</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="monsoon rain and puddles"><span><b aria-hidden="true">🌧️</b> Monsoon rain</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="a festival of lights"><span><b aria-hidden="true">🪔</b> Festivals</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="friendship"><span><b aria-hidden="true">🤝</b> Friendship</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="bravery"><span><b aria-hidden="true">🦁</b> Bravery</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="kindness"><span><b aria-hidden="true">💛</b> Kindness</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="sharing"><span><b aria-hidden="true">🍪</b> Sharing</span></label>
+              <label class="chip"><input type="checkbox" name="topic" value="a very silly adventure"><span><b aria-hidden="true">🤪</b> Silly fun</span></label>
+            </div>
+            <p class="count" id="topicCount" aria-live="polite">Nothing picked. We’ll surprise you.</p>
+          </fieldset>
+
+          <div class="row">
+            <div class="field">
+              <label for="heroName">Hero’s name <span class="opt">optional</span></label>
+              <input id="heroName" name="heroName" type="text" maxlength="30" autocomplete="off" placeholder="Mira, Arjun, Bunty…">
+            </div>
+            <div class="field">
+              <label for="age">Age</label>
+              <select id="age" name="age">
+                <option value="3-5">3 to 5 years</option>
+                <option value="6-8" selected>6 to 8 years</option>
+                <option value="9-12">9 to 12 years</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lang">Language</label>
+              <select id="lang" name="lang">
+                <option value="en" selected>English</option>
+                <option value="hi">हिन्दी · Hindi</option>
+                <option value="mr">मराठी · Marathi</option>
+                <option value="bn">বাংলা · Bengali</option>
+                <option value="ta">தமிழ் · Tamil</option>
+                <option value="te">తెలుగు · Telugu</option>
+                <option value="kn">ಕನ್ನಡ · Kannada</option>
+                <option value="ml">മലയാളം · Malayalam</option>
+                <option value="gu">ગુજરાતી · Gujarati</option>
+                <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+                <option value="od">ଓଡ଼ିଆ · Odia</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="group">
+            <legend>How long?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="length" value="short"><span>Short</span></label>
+              <label class="chip"><input type="radio" name="length" value="medium" checked><span>Medium</span></label>
+              <label class="chip"><input type="radio" name="length" value="long"><span>Long</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field group">
+            <label for="extra">Anything special to include? <span class="opt">optional</span></label>
+            <textarea id="extra" name="extra" rows="2" maxlength="200" placeholder="A pet parrot called Moti, a love of mangoes, a trip to grandma’s house…"></textarea>
+          </div>
+
+          <div class="group audio-group">
+            <label class="switch">
+              <input type="checkbox" id="audioToggle" name="audio">
+              <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+              <span class="switch-text"><strong>Read it aloud</strong><small>Adds a narrator voice you can play page by page</small></span>
+            </label>
+            <div class="audio-opts" id="audioOpts" hidden>
+              <div class="field">
+                <label for="voice">Voice</label>
+                <select id="voice" name="voice">
+                  <option value="ritu" selected>Ritu</option>
+                  <option value="priya">Priya</option>
+                  <option value="kavya">Kavya</option>
+                  <option value="simran">Simran</option>
+                  <option value="shubh">Shubh</option>
+                  <option value="aditya">Aditya</option>
+                  <option value="rohan">Rohan</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pace">Speed</label>
+                <select id="pace" name="pace">
+                  <option value="0.85">Slow and cosy</option>
+                  <option value="1" selected>Normal</option>
+                  <option value="1.15">A bit faster</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary" id="makeBtn">Write my story</button>
+            <button type="button" class="btn secondary" id="surpriseBtn">Surprise me</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ============ 2. LOADING ============ -->
+      <section id="loadingView" class="loading" hidden aria-live="polite">
+        <div class="loader" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p id="loadingText">Gathering stardust…</p>
+      </section>
+
+      <!-- ============ 3. THE STORYBOOK ============ -->
+      <section id="bookView" hidden aria-labelledby="storyTitle">
+        <div class="book-bar">
+          <button type="button" class="btn ghost" id="newStoryBtn">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            New story
+          </button>
+          <div class="audio-bar" id="audioBar" hidden>
+            <button type="button" class="btn audio" id="playBtn">
+              <svg id="playIcon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              <span id="playLabel">Read aloud</span>
+            </button>
+            <label class="auto"><input type="checkbox" id="autoTurn" checked> Turn pages automatically</label>
+          </div>
+        </div>
+
+        <h2 id="storyTitle" class="story-title"></h2>
+
+        <article class="book" id="book">
+          <div class="scene" id="scene" aria-hidden="true"><span class="scene-emoji" id="sceneEmoji"></span></div>
+          <div class="page">
+            <p class="page-label" id="pageLabel" hidden>The end</p>
+            <p class="page-text" id="pageText"></p>
+          </div>
+        </article>
+
+        <nav class="pager" aria-label="Story pages">
+          <button type="button" class="round" id="prevBtn" aria-label="Previous page">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="pager-mid">
+            <div class="dots" id="dots"></div>
+            <p class="page-count" id="pageCount"></p>
+          </div>
+          <button type="button" class="round" id="nextBtn" aria-label="Next page">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="foot">Stories are written by <strong>Sarvam AI</strong> (Sarvam 105B), and narration is voiced by Sarvam AI (Bulbul). Please read along with your child.</footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
